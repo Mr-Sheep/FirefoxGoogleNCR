@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "name": "Google NCR",
+    "description": "Change Google region + disable personalized web search + safe search off",
+    "version": "1.0.0",
+    "applications": {
+      "gecko": {
+        "strict_min_version": "57.0"
+      }
+    },
+    "permissions": [
+      "search",
+      "storage",
+      "webRequest",
+      "webRequestBlocking",
+      "https://*.google.com/*"
+    ],
+    "chrome_settings_overrides": {
+      "search_provider": {
+        "name": "Google NCR",
+        "search_url": "https://www.google.com/search?q={searchTerms}&pws=0&gl=us&gws_rd=cr&safe=off",
+        "favicon_url": "https://www.google.com/favicon.ico",
+        "is_default": true
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://*.google.com/*"],
+        "run_at": "document_end"
+      }
+    ]
+  }
